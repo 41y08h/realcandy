@@ -2,10 +2,6 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require("mongoose");
 const _ = require("lodash");
-<<<<<<< HEAD
-var http = express.createServer();
-=======
->>>>>>> parent of 2caf17e... Add http to https redirect
 
 
 const app = express();
@@ -14,9 +10,9 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static('public'));
 app.set("view engine", "ejs");
 
-http.get('*', function(req, res) {  
-  res.redirect('https://' + req.headers.host + req.url);
-})
+app.get("*", function(request, response){
+  response.redirect("https://" + request.headers.host + request.url);
+});
 
 mongoose.connect(process.env.DB_URI, {useNewUrlParser: true, useUnifiedTopology: true});
 
