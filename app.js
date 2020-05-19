@@ -2,10 +2,12 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require("mongoose");
 const _ = require("lodash");
+var sslRedirect = require("heroku-ssl-redirect");
 
 
 const app = express();
 
+app.use(sslRedirect());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static('public'));
 app.set("view engine", "ejs");
