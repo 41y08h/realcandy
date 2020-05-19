@@ -9,12 +9,7 @@ const app = express();
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static('public'));
 app.set("view engine", "ejs");
-
-app.use(function(request, response){
-  if(!request.secure){
-    response.redirect("https://" + request.headers.host + request.url);
-  }
-});
+app.enable('trust proxy');
 
 mongoose.connect(process.env.DB_URI, {useNewUrlParser: true, useUnifiedTopology: true});
 
