@@ -66,7 +66,7 @@ app.get("/", function(req, res) {
         });
 
       } else {
-        res.render("list", {listTitle: "Today", todoItems: foundItems, pageTitle: 'TODO List'});
+        res.render("list", {listTitle: "Bhaskar", todoItems: foundItems, pageTitle: 'TODO List'});
       }
     }
   });
@@ -82,7 +82,7 @@ app.post("/", function(req, res) {
     name: itemName
   });
 
-  if(listName === "Today") {
+  if(listName === "Bhaskar") {
 
     item.save(function (err) {
       if (err) {
@@ -108,7 +108,7 @@ app.post("/delete", function(req, res) {
   const checkedItemId = req.body.checkbox; 
   const listName = req.body.listName;
 
-  if(listName === "Today") {
+  if(listName === "Bhaskar") {
     Item.findByIdAndRemove(checkedItemId, function(err) {
       if (err) {
         console.log(err);      
